@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Registro2</title>
+  {% load static crispy_forms_tags %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login-form.css' %}" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
+    {% if request.user.is_authenticated %}
+    <a class="bar-nav" href="{% url 'exit' %}">Cerrar Sesión</a>
+    {% else %}
+    <a class="bar-nav" href="{% url 'login' %}">Inicio de Sesión</a>
+    {% endif %}
+    <a class="bar-nav" href="#footer">Contacto</a>
+  </nav>
+  <div class="section">
+    {% load crispy_forms_tags %}
+    <div class="contenedor-form">
+      <div>
+      </div>
+      <div class="formulario">
+        <h2>Crea tu Cuenta</h2>
+        <form action="" method="post">
+          <input type="text" placeholder="Nombre" required />
+          <input type="text" placeholder="Apellido" required />
+          <input type="password" placeholder="Contraseña" required />
+          <input type="text" placeholder="Dirección" required />
+          <input type="email" placeholder="Correo Electronico" required />
+          <input type="text" placeholder="Teléfono" required />
+          <input type="submit" value="Registrarse" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer">
+    <h2>CONTACTANOS:</h2>
+
+    <div class="container-contactanos">
+      <div class="container-contactanos-left">
+        <h2>Correo Electrónico:</h2>
+        <p>
+          <a style="color: white" href="http://gmail.com">driverXperence@gmail.com</a>
+        </p>
+      </div>
+      <div class="container-contactanos-midle">
+        {% load static %}
+        <h2>Nuestras Redes Sociales:</h2>
+        <img style="width: 130px; padding-left: 50px" src="image/icon-redes.jpg " alt="" />
+      </div>
+      <div class="container-contactanos-right">
+        <h2>Teléfonos:</h2>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+      </div>
+    </div>
+
+    <hr />
+    <h2>Derechos Reservados</h2>
+    <p>
+      El contenido de este sitio web está protegido por las leyes de derechos
+      de autor. Queda prohibida su reproducción sin autorización previa.
+      DriveXperience se reserva el derecho de modificar la información en
+      cualquier momento. Para más detalles, contáctenos.
+    </p>
+  </footer>
+
+</body>
+
+</html>

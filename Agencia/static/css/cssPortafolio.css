@@ -1,0 +1,96 @@
+/* Container principal para centrar el contenido */
+.main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Configuración de la fila (row) para distribución de columnas */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas se ajusten automáticamente */
+  gap: 20px; /* Espacio entre columnas */
+  justify-content: space-between; /* Espacio entre las columnas */
+  padding: 0 10px;
+}
+
+/* Columnas de igual tamaño con flexbox */
+.column {
+  flex: 1 1 22%; /* Las columnas ocupan el mismo tamaño y se ajustan */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  min-width: 220px; /* Evita que las columnas se deformen en pantallas pequeñas */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aseguramos que las imágenes dentro de las columnas tengan un tamaño consistente */
+.column img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Mantiene la proporción de la imagen sin distorsionarla */
+  border-radius: 5px;
+}
+
+/* Estilo para el contenido dentro de las columnas */
+.content {
+  background-color: rgb(241, 241, 241);
+  padding: 20px; /* Aseguramos que haya un padding consistente */
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Hace que el contenedor ocupe toda la altura disponible */
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para un mejor estilo */
+}
+
+/* Estilo de los botones */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 3px; /* Bordes redondeados */
+  width: 100%; /* El botón ocupa todo el ancho del contenedor */
+}
+
+.btn:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+/****************** Responsividad (Media Queries) ******************/
+
+/* Para pantallas más pequeñas (tabletas) */
+@media (max-width: 768px) {
+  .column {
+    flex: 1 1 45%; /* 2 columnas por fila */
+  }
+}
+
+/* Para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .column {
+    flex: 1 1 100%; /* 1 columna por fila */
+  }
+
+  .main {
+    padding: 10px; /* Ajuste de padding en pantallas pequeñas */
+  }
+
+  .btn {
+    width: 100%; /* El botón ocupa toda la anchura */
+  }
+}

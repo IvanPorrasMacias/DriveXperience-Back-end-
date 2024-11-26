@@ -1,0 +1,178 @@
+/* Estilo para el contenedor del formulario */
+.contenedor-form {
+    background: rgba(0,0,0,.7);
+    max-width: 500px; /* Máximo ancho del formulario */
+    width: 100%;
+    margin: 48px auto;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    float: right;
+    margin-right: 50px;
+    padding: 40px; /* Espaciado interno */
+}
+
+/* Toggle button */
+.contenedor-form .toggle {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    border-top: 2px solid #ff851b;
+    border-bottom: 2px solid #ff851b;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.contenedor-form .toggle:hover {
+    border-top: 2px solid #0075d9;
+    border-bottom: 2px solid #0075d9;
+}
+
+.contenedor-form .toggle span {
+    letter-spacing: 1px;
+}
+
+/* Estilo de los títulos */
+.contenedor-form h2 {
+    margin: 0 0 28px 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* Estilo de los inputs */
+.contenedor-form input[type="text"],
+.contenedor-form input[type="password"],
+.contenedor-form input[type="email"] {
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0 0 20px 0;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 4px solid #ff851b;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all .5s ease;
+}
+
+/* Efecto en el foco de los inputs */
+.contenedor-form input[type="text"]:focus,
+.contenedor-form input[type="password"]:focus,
+.contenedor-form input[type="email"]:focus {
+    border-bottom: 4px solid #0075d9;
+}
+
+/* Estilo del botón de submit */
+.contenedor-form input[type="submit"] {
+    background: #FF851B;
+    color: #FFF;
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: Roboto;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.contenedor-form input[type="submit"]:hover {
+    background: rgba(0, 117, 217, 0.7);
+}
+
+/* Estilo para el enlace de reset de contraseña */
+.contenedor-form .reset-password {
+    background: rgba(0, 117, 217, .7);
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.contenedor-form .reset-password a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Estilo de los formularios internos */
+.contenedor-form .formulario {
+    display: none;
+    padding: 40px;
+}
+
+.contenedor-form .formulario:nth-child(2) {
+    display: block;
+}
+
+/* ****************** Media Queries para hacerlo responsivo ******************/
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .contenedor-form {
+        margin: 20px auto; /* Espaciado más pequeño en móviles */
+        padding: 20px; /* Reducir padding */
+        margin-right: 0; /* Quitar margen derecho */
+    }
+
+    .contenedor-form h2 {
+        font-size: 18px; /* Reducir tamaño de fuente del título */
+    }
+
+    .contenedor-form input[type="text"],
+    .contenedor-form input[type="password"],
+    .contenedor-form input[type="email"] {
+        font-size: 14px; /* Reducir tamaño de fuente de los inputs */
+        padding: 8px 12px; /* Reducir padding */
+    }
+
+    .contenedor-form input[type="submit"] {
+        font-size: 14px; /* Reducir tamaño de fuente del botón */
+        padding: 8px 0; /* Reducir padding */
+    }
+
+    .contenedor-form .reset-password a {
+        font-size: 14px; /* Reducir tamaño de fuente en el enlace */
+    }
+}
+
+/* Para tabletas pequeñas (entre 481px y 768px) */
+@media (max-width: 768px) {
+    .contenedor-form {
+        margin: 20px auto;
+        padding: 30px;
+    }
+
+    .contenedor-form h2 {
+        font-size: 19px;
+    }
+
+    .contenedor-form input[type="text"],
+    .contenedor-form input[type="password"],
+    .contenedor-form input[type="email"] {
+        font-size: 15px;
+        padding: 9px 14px;
+    }
+
+    .contenedor-form input[type="submit"] {
+        font-size: 15px;
+        padding: 9px 0;
+    }
+
+    .contenedor-form .reset-password a {
+        font-size: 15px;
+    }
+}

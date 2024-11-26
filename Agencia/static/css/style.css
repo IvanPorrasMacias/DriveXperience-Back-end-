@@ -1,0 +1,280 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+
+.home-nav {
+  flex: auto;
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.home-nav img {
+  height: 40px; /* Ajusta la altura de la imagen */
+  width: auto; /* Mantiene la proporción */
+}
+
+.bar-nav {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.bar-nav:hover {
+  text-decoration: underline; /* Subraya el texto al pasar el mouse */
+}
+
+/****************** Estilos de la imagen principal ******************/
+
+.main-image {
+  background-image:url("../image/img-principal.jpg");
+  width: 100%;
+  height: 700px;
+}
+
+/****************** Diseño de las imágenes en la página ******************/
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+  float: left;
+  width: 100%;
+  color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Asegura que los elementos se ajusten */
+}
+
+.image-wrapper {
+  width: calc(33% - 10px); /* Restar el margen del 33% */
+  position: relative;
+  margin-right: 10px; /* Espacio entre imágenes */
+}
+
+.image {
+  width: 100%; /* Asegúrate de que la imagen ocupe todo el contenedor */
+  height: 500px; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  color: white; /* Color del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Inicialmente oculto */
+  transition: opacity 0.3;
+  font-weight: bold;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1; /* Muestra el overlay al pasar el ratón */
+}
+
+/* Efecto al pasar el mouse (zoom y mostrar overlay) */
+.image-wrapper:hover .image {
+  transform: scale(0.9); /* Escala la imagen al 90% */
+  transition: transform 0.6s ease; /* Transición suave para el zoom */
+}
+
+/****************** Sección "Nosotros" ******************/
+
+.we-are{
+  width: 100%;
+  height: 300px;
+  background-color: rgb(37, 37, 37);
+  padding-bottom: 30px;
+}
+
+.we-are h1{
+  padding-left: 70px;
+  padding-top: 50px;
+  color: white;
+  font-size: 40px;
+  margin-bottom: 0px;
+}
+
+.we-are h2{
+  padding-left: 70px;
+  padding-right: 100px;
+  color: white;
+}
+
+.we-are p{
+  padding-left: 70px;
+  padding-right: 40px;
+  font-size: 20px;
+  color: white;
+}
+
+.img-index-midle{
+  background-image:url("../image/img-index-medio.jpg");
+  width: 100%;
+  height: 700px;
+  margin-top: 30px;
+}
+
+/****************** Sección de Horarios ******************/
+
+.container-schedule {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-image: url("../image/img-horario.jpg");
+}
+
+.schedule{
+  width: 100%;
+  height: 500px;
+  margin-top: 40px;
+}
+
+.schedule h2{
+  padding-left: 100px;
+  color: white;
+  padding-bottom: 30px;
+}
+
+table {
+  width: 300px;
+  border-collapse: collapse;
+  margin-left: 100px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: white;
+}
+
+/****************** Footer ******************/
+
+footer {
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-color: black;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+}
+
+footer h2{
+  color: white;
+  padding-left: 50px;
+}
+
+footer p{
+  padding-left: 50px;
+}
+
+.container-contactanos {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; /* Hace que los elementos se ajusten en pantallas pequeñas */
+}
+
+.container-contactanos-left, .container-contactanos-midle, .container-contactanos-right {
+  flex: 3;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/********** Media Queries (Adaptación para pantallas pequeñas) **********/
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Las columnas se apilan en pantallas más pequeñas */
+  }
+
+  .image-wrapper {
+    width: 100%; /* Las imágenes ocupan el 100% del ancho en pantallas más pequeñas */
+    margin-right: 0;
+  }
+
+  .schedule {
+    margin-top: 20px; /* Ajustamos la parte del horario */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-nav, .bar-nav {
+    font-size: 14px; /* Ajusta el tamaño de las fuentes */
+  }
+
+  .we-are h1 {
+    font-size: 30px; /* Reducir el tamaño de los títulos en pantallas más pequeñas */
+  }
+
+  .img-index-midle {
+    height: 400px; /* Reduce el tamaño de la imagen de la sección de medio */
+  }
+
+  .container-schedule {
+    flex-direction: column; /* Hace que las secciones de horario se apilen en pantallas más pequeñas */
+  }
+
+  table {
+    width: 100%; /* Asegura que la tabla ocupe el 100% del ancho */
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-contactanos-left, .container-contactanos-midle, .container-contactanos-right {
+    flex: 1 1 100%; /* Las tres secciones de contacto ocupan el 100% del ancho en pantallas pequeñas */
+  }
+
+  footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .home-nav, .bar-nav {
+    font-size: 12px; /* Ajusta el tamaño de la fuente en pantallas muy pequeñas */
+  }
+
+  .we-are h1 {
+    font-size: 25px; /* Ajusta el tamaño del título en pantallas pequeñas */
+  }
+}

@@ -1,0 +1,49 @@
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.row { /*fila*/
+  margin: 10px -16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*Crea cuatro columnas iguales que floten una al lado de la otra.*/
+.column {
+  float: left;
+  width: 25%;
+}
+
+
+/* Content */
+.content {
+  background-color: rgb(241, 241, 241);
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Estilo de los botones */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriveXperience</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="script" type="text/js" href="{% static 'js/slide.js' %}" />
+</head>
+
+<body class="body">
+  <nav class="topnav">
+    <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
+    {% if request.user.is_authenticated %}
+    <a class="bar-nav" href="{% url 'exit' %}">Cerrar Sesión</a>
+    <a class="bar-nav" href="{% url 'panelUsuario' %}">Mis Planes</a>
+    {% else %}
+    <a class="bar-nav" href="{% url 'login' %}">Inicio de Sesión</a>
+    {% endif %} 
+    <a class="bar-nav" href="{% url 'catalogo' %}">Vehículos</a>
+    <a class="bar-nav" href="#footer">Contacto</a>
+    {% if request.user.is_authenticated %}
+    <a class="bar-nav">Bienvenido, {{ user.username }}</a>
+    {% endif %}
+  </nav>
+  <section>
+    <div class="main-image"></div>
+      <div class="row">
+        <div class="container">
+          {% load static %}
+          <div class="image-wrapper">
+            <a href="{% url 'catalogo' %}">
+              <img src="{% static 'image/img-financiamiento.jpg' %}" alt="Img-Financiamiento" class="image"
+                id="image-financiamiento" />
+              <div class="overlay">
+                <p >¡REALIZAR SIMULACIÓN!</p>
+              </div>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="{% url 'login' %}">
+              <img src="{% static 'image/img-servicio.jpg' %}" alt="Img-Servicio" class="image" id="image-servicio" />
+              <div class="overlay">
+                <p>¡AGENDAR CITA!</p>
+              </div>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="{% url 'login' %}">
+              <img src="{% static 'image/img-prueba-manejo.jpg' %}" alt="Img-PruebaManejo" class="image" id="image-prueba" />
+              <div class="overlay">
+                <p>¡AGENDAR CITA!</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="we-are">
+        <h1>DriveXperience</h1>
+        <h2>Agencia de Autos Seminuevos, León GTO</h2>
+        <p>
+          Este es el sitio web oficial de la Agencia Seminuevos DriveXperience.
+          Aquí puedes encontrar toda la información sobre los modelos de autos
+          seminuevos que tenemos disponibles, nuestra área de servicio
+          automotriz, horarios de atención, métodos de contacto y promociones
+          vigentes.
+        </p>
+      </div>
+      <div class="img-index-midle"></div>
+      <br /><br />
+      <div class="container-schedule">
+        <div class="schedule">
+          <h2>¡ESTAMOS LISTOS PARA RECIBIRTE!</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Horario de Atención</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lunes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Martes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Miércoles</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Jueves</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Viernes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Sábado</td>
+                <td>10:00 AM - 4:00 PM</td>
+              </tr>
+              <tr>
+                <td>Domingo</td>
+                <td>10:00 AM - 4:00 PM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </section>
+
+  <footer class="footer" id="footer">
+    <h2>CONTACTANOS:</h2>
+    <div class="container-contactanos">
+      <div class="container-contactanos-left">
+        <h2>Correo Electrónico:</h2>
+        <p>
+          <a style="color: white" href="http://gmail.com">driverXperence@gmail.com</a>
+        </p>
+      </div>
+      <div class="container-contactanos-midle">
+        <h2>Nuestras Redes Sociales:</h2>
+        <img style="width: 130px; padding-left: 50px" src="image/icon-redes.jpg " alt="" />
+      </div>
+      <div class="container-contactanos-right">
+        <h2>Teléfonos:</h2>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+      </div>
+    </div>
+    <hr />
+    <h2>Derechos Reservados</h2>
+    <p>
+      El contenido de este sitio web está protegido por las leyes de derechos
+      de autor. Queda prohibida su reproducción sin autorización previa.
+      DriveXperience se reserva el derecho de modificar la información en
+      cualquier momento. Para más detalles, contáctenos.
+    </p>
+  </footer>
+
+</body>
+
+</html>

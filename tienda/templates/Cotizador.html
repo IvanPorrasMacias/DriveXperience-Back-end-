@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotizador</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cotizador.css' %}" />
+  </head>
+  <body class="body">
+    <nav class="topnav">
+      <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
+      {% if request.user.is_authenticated %}
+        <a class="bar-nav">Cerrar Sesión</a>
+      {% else %}
+        <a class="bar-nav" href="{% url 'login' %}">Inicio de sesión</a>
+      {% endif %}
+      <a class="bar-nav" href="{% url 'catalogo' %}">Vehículos</a>      
+    <a class="bar-nav" href="{% url 'panelUsuario' %}">Mis Planes</a>
+      <a class="bar-nav" href="#footer">Contacto</a>
+    </nav>
+    <br />
+    <h2 style="text-align: center">COTIZADOR</h2>
+
+    <div class="car-container">
+      <h2>Detalles del Auto</h2>
+      <img src="{{ vehículo.fotoLateral.url }}" style="width: 30%" alt="Foto del auto" />
+      <p><b>Precio:</b> <span id="precioLista"> ${{ vehículo.precioLista }} </span></p>
+      <p><b>Año:</b> <span> {{ vehículo.año }}</span></p>
+    </div>
+    
+    <div class="container">
+      <div class="left-column">
+        <h2>Configura tu crédito</h2>
+        <p>Enganche mínimo de $100,000</p>
+        <div class="Form">
+          <form id="formEnganche">
+            <label for="enganche">Enganche</label>
+            <input
+              type="number"
+              id="enganche"
+              name="enganche"
+              placeholder="Ingrese el enganche deseado"
+              min="70000"
+              required
+            />
+    
+            <label for="plazoSelect">Mensualidades</label>
+            <select id="plazoSelect" name="plazo">
+              <option value="24">24 MESES</option>
+              <option value="36">36 MESES</option>
+              <option value="48">48 MESES</option>
+            </select>
+    
+            <label for="aseguradora">Aseguradora</label>
+            <select name="aseguradora" id="aseguradora">
+              <option value="qualitas">QUALITAS: $14,000</option>
+              <option value="gnp">GNP: $12,000</option>
+            </select>
+    
+            <input class="btnGenerar" type="button" value="Generar" id="submitBtn" disabled />
+          </form>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="nav">
+          <p class="text-nav-right-column">
+            <span>MENSUALIDAD:</span>
+            <span id="mensualidad">-</span>
+          </p>
+        </div>
+        <h3><b>RESUMEN DE COTIZADOR</b></h3>
+        <p class="text-bold-right-column">
+          <span class="label"><b>MONTO A FINANCIAR</b>:</span>
+          <span class="result" id="montoFinanciar">-</span>
+        </p>
+        <hr />
+        <p class="text-bold-right-column">
+          <span class="label"><b>PAGO INICIAL</b>: </span>
+          <span class="result" id="pagoInicial">-</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Comisión por apertura:</span>
+          <span class="result" id="comisionApertura">$15,000</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Seguro de contado: </span>
+          <span class="result" id="seguroContado">$14,000</span>
+        </p>
+        <hr />
+        <p class="text-right-column">
+          <span class="label">Tasa de interés:</span>
+          <span class="result" id="tasaInteres">8 %</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Plazo:</span>
+          <span class="result" id="plazoLabel">24 MESES</span>
+        </p>
+        <input class="btnGuardarCot" type="button" id="guardarCotizacion" value="Guardar Cotización" />
+      </div>
+    </div>  
+    <footer class="footer" id="footer">
+      <h2>CONTACTANOS:</h2>
+      <div class="container-contactanos">
+        <div class="container-contactanos-left">
+          <h2>Correo Electrónico:</h2>
+          <p>
+            <a style="color: white" href="http://gmail.com">driverXperence@gmail.com</a>
+          </p>
+        </div>
+        <div class="container-contactanos-midle">
+          <h2>Nuestras Redes Sociales:</h2>
+          <img style="width: 130px; padding-left: 50px" src="image/icon-redes.jpg " alt="" />
+        </div>
+        <div class="container-contactanos-right">
+          <h2>Teléfonos:</h2>
+          <p>(477) 333-3333</p>
+          <p>(477) 333-3333</p>
+          <p>(477) 333-3333</p>
+        </div>
+      </div>
+      <hr />
+      <h2>Derechos Reservados</h2>
+      <p>
+        El contenido de este sitio web está protegido por las leyes de derechos
+        de autor. Queda prohibida su reproducción sin autorización previa.
+        DriveXperience se reserva el derecho de modificar la información en
+        cualquier momento. Para más detalles, contáctenos.
+      </p>
+    </footer>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const engancheInput = document.getElementById("enganche");
+      const submitBtn = document.getElementById("submitBtn");
+      const montoFinanciarSpan = document.getElementById("montoFinanciar");
+      const mensualidadSpan = document.getElementById("mensualidad");
+      const plazoSelect = document.getElementById("plazoSelect");
+      const plazoSpan = document.getElementById("plazoLabel");
+      const precioListaSpan = document.getElementById("precioLista");
+      const aseguradoraSelect = document.getElementById("aseguradora");
+      const seguroContadoSpan = document.getElementById("seguroContado");
+      const pagoInicialSpan = document.getElementById("pagoInicial"); // Cambio en el selector
+      const comisionApertura = 15000; // Valor fijo
+      const interesMensual = parseFloat("{{ vehículo.interesMensual|safe }}");
+      const precioListaAuto = parseFloat("{{ vehículo.precioLista|safe }}")
+    
+      aseguradoraSelect.addEventListener("change", function () {
+        const aseguradoraValue = aseguradoraSelect.value;
+    
+        // Actualiza el seguro de contado según la aseguradora seleccionada
+        let seguro;
+        switch (aseguradoraValue) {
+          case "qualitas":
+            seguro = 14000; // Valor de Qualitas
+            break;
+          case "gnp":
+            seguro = 12000; // Valor de GNP
+            break;
+          default:
+            seguro = 14000; // Valor predeterminado si no hay aseguradora seleccionada
+        }
+        seguroContadoSpan.textContent = `$${seguro.toLocaleString()}`;
+      });
+
+      plazoSelect.addEventListener("change", function () {
+        const plazoSelectValue = plazoSelect.value;
+        plazoSpan.textContent = `${plazoSelectValue} MESES`;
+      });
+      
+    
+      // Obtiene el precio de lista del HTML y lo convierte en número limpio
+      const precioLista = parseFloat(
+        precioListaSpan.textContent.replace("$", "").replace(",", ".").trim()
+      );
+    
+      engancheInput.addEventListener("input", function () {
+        const engancheValue = parseFloat(engancheInput.value);
+    
+        // Habilitar o deshabilitar el botón según la validación
+        if (!isNaN(engancheValue) && engancheValue >= 100000 && engancheValue <= precioListaAuto) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      });
+    
+      // Calcular monto a financiar y mensualidades cuando se presiona el botón "Generar"
+      submitBtn.addEventListener("click", function () {
+        const engancheValue = parseFloat(engancheInput.value);
+        const plazoValue = plazoSelect.value
+        const seguroValue = parseFloat(
+          seguroContadoSpan.textContent.replace("$", "").replace(",", "").trim()
+        );
+    
+        if (!isNaN(engancheValue) && engancheValue >= 70000) {
+          const montoFinanciar = precioLista - engancheValue;
+          const mensualidades = (montoFinanciar / plazoValue) + interesMensual;
+    
+          montoFinanciarSpan.textContent = `$${montoFinanciar.toLocaleString()}`;
+          mensualidadSpan.textContent = `$${mensualidades.toFixed(2)}`;
+    
+          const pagoInicial = comisionApertura + (isNaN(seguroValue) ? 0 : seguroValue) + mensualidades;
+    
+          pagoInicialSpan.textContent = `$${pagoInicial.toFixed(2)}`;
+        } else {
+          alert("Por favor, ingrese un enganche válido.");
+        }
+      });
+      document.getElementById("guardarCotizacion").addEventListener("click", function () {
+        const data = {
+            vehiculo_id: parseInt("{{ vehículo.id }}"),
+            mensualidades: parseFloat(document.getElementById("mensualidad").textContent.replace("$", "").trim()),
+            plazo: parseInt(document.getElementById("plazoLabel").textContent.replace(" MESES", "").trim()),
+            monto_a_financiar: parseFloat(document.getElementById("montoFinanciar").textContent.replace("$", "").replace(",","").trim()),
+            pago_inicial: parseFloat(document.getElementById("pagoInicial").textContent.replace("$", "").trim()),
+            seguro_contado: parseFloat(document.getElementById("seguroContado").textContent.replace("$", "").replace(",", "").trim())
+        };
+
+        fetch("{% url 'guardar_cotizacion' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert(result.message);
+                window.location.href = result.redirect_url;
+            } else {
+                alert("Error: " + result.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+    });    
+  </script>  
+</html>

@@ -1,0 +1,15 @@
+/*--------------Login-----------------*/
+
+.section{
+    background-image: url("../image/img-login-left.png");
+    width: 100%;
+    height: 540px;
+  }
+  .section h2{
+    margin-top: 0px;
+    padding-left: 10PX;
+    color: white;
+    font-size: 14px;
+  }
+
+ 
