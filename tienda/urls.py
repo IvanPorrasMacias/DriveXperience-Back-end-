@@ -4,12 +4,13 @@ from django.urls import path
 from . import views
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UsuarioViewSet,VehículoViewSet
+from .views import UsuarioGetAll, VehículoGetAll#, PlanGetAll
 import django.contrib.auth.urls
 
 router = DefaultRouter()
-router.register(r'usuarios', UsuarioViewSet)
-router.register(r'vehiculos', VehículoViewSet)
+router.register(r'usuarios', UsuarioGetAll)
+router.register(r'vehiculos', VehículoGetAll)
+# router.register(r'planes', PlanGetAll)
 
 urlpatterns = [
     path('api/', include(router.urls)),

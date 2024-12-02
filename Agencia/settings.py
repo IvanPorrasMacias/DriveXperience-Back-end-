@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_remf91hgru2176(=5d0%610o%-c2sn+c3n#40+c7+5a!if7wv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.107.29','7025-200-23-39-55.ngrok-free.app'] 
 
 
 # Application definition
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'America, Mexico City'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -133,6 +133,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.0.1:4200",  # Dirección del servidor Angular (puerto por defecto de Angular: 4200)
+]
+
 
 CORS_ALLOW_ALL_ORIGINS = True  # Permitir todas las solicitudes de cualquier dominio
 

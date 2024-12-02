@@ -10,16 +10,23 @@ from django.contrib.auth import logout
 from django.contrib import messages
 
 from .models import Plan, Usuario, Vehículo
-from .serializers import UsuarioSerializer,VehículoSerializer
-from .forms import CustomUserAuthenticationForm, CustomUserRegistrationForm
+from .serializers import UsuarioSerializer,VehículoSerializer, PlanSerializer
+from .forms import CustomUserRegistrationForm
 
-class UsuarioViewSet(viewsets.ModelViewSet):
+class UsuarioGetAll(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
-class VehículoViewSet(viewsets.ModelViewSet):
+# class UsuarioGetUsername(viewsets.ModelViewSet, Usuario.username):
+#     queryset = get_object_or_404(username=Usuario.username)
+
+class VehículoGetAll(viewsets.ModelViewSet):
     queryset = Vehículo.objects.all()
     serializer_class = VehículoSerializer
+
+# class PlanGetAll(viewsets.ModelViewSet):
+#     queryset = Plan.objects.all()
+#     serializer_class = PlanSerializer
 
 def IndexView(request):
     return render(request,'indexCar.html')
