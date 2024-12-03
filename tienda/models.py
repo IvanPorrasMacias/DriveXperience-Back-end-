@@ -15,22 +15,34 @@ class Usuario(AbstractUser):
     pass
 
 class Vehículo(models.Model):
-    marca = models.CharField(max_length=30)
-    modelo = models.CharField(max_length=30)
-    año = models.CharField(max_length=4)
-    especificaciones = models.CharField(max_length=200)
-    precioLista = models.DecimalField(max_digits=10, decimal_places=2)
-    interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    interesMensual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    fotoLateral = models.ImageField(default='acura.png', upload_to='autosTresCuartos/') 
-
-    def save(self, *args, **kwargs):
-        self.interesAnual = (self.precioLista*8)/100
-        self.interesMensual = self.interesAnual/12
-        super(Vehículo, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.marca + ' - ' + self.modelo
+    marca = models.CharField(max_length=30, null=False)
+    modelo = models.CharField(max_length=30, null=False)
+    año = models.CharField(max_length=4, null=False)
+    tipoTransmision = (
+        ('a','Automático'),
+        ('m','Manual'),
+        ('','Sin definir')
+    )
+    transmision = models.CharField(max_length=1, null=True, blank=True, choices=tipoTransmision, default='')
+    tipoCombustible = (
+        ('gas','Gasolina'),
+        ('diesel','Diesel'),
+        ('electricity','Eléctrico'),
+        ('','Sin definir')
+    )
+    combustible = models.CharField(max_length=11, null=True, blank=True, choices=tipoCombustible, default='')
+    tipoTraccion = (
+        ('fwd','Delantera'),
+        ('rwd','Trasera'),
+        ('4wd','4x4'),
+        ('','Sin definir')
+    )
+    traccion = models.CharField(max_length=3, null=True, blank=True, choices=tipoTraccion, default='')
+    cilindros = models.IntegerField(null=True, blank=True)
+    precioLista = models.DecimalField(max_digits=10, decimal_places=2, null=False)
+    interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
+    interesMensual = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
+    fotoLateral = models.ImageField(default='acura.png', upload_to='autosTresCuartos/')
 
 
 class Plan(models.Model):
